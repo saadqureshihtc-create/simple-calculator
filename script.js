@@ -50,3 +50,27 @@ function calculate() {
         display.value = "Error";
     }
 }
+
+document.addEventListener("keydown", function(event) {
+
+    if (!isNaN(event.key)) {
+        appendNumber(event.key);
+    }
+
+    if ("+-*/%".includes(event.key)) {
+        appendOperator(event.key);
+    }
+
+    if (event.key === "Enter") {
+        calculate();
+    }
+
+    if (event.key === "Escape") {
+        clearDisplay();
+    }
+
+    if (event.key === "Backspace") {
+        deleteLast();
+    }
+
+});
