@@ -1,0 +1,32 @@
+name: Calculator CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check script.js
+
+      - name: Check HTML content
+        run: |
+          grep -q "<title>Simple Calculator</title>" index.html
+
+      - name: CI successful
+        run: echo "All calculator checks passed!"
