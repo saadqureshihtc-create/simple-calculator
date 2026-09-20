@@ -30,7 +30,7 @@ function deleteLast() {
     }
 }
 
-function calculate() {
+function calculate( {
     try {
         const expression = display.value;
 
